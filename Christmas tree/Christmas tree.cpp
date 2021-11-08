@@ -38,7 +38,10 @@ string christamsBalls(string balls)
 	{
 		if (count(locationOfBalls.begin(), locationOfBalls.end(), i))
 		{
-			treeWithBalls+="==";
+			treeWithBalls+="o";
+		}
+		else {
+			treeWithBalls += "*";
 		}
 	}
 	return treeWithBalls;
