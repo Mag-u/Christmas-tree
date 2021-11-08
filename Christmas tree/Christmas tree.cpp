@@ -16,20 +16,30 @@ bool even(int number)
 string christamsBalls(string balls)
 {
 	vector <int> locationOfBalls;
-	string treeWithBalls = "#";
-	/*balls - losowanie miejsc - umiejscownienie bombek*/
+	string treeWithBalls = "*";
 	int amountOfBalls = 0;
 	amountOfBalls = (rand() % balls.length());
+
 	for (int i = 0; i < amountOfBalls; i++)
 	{
 		int key = 0;
 		key = (rand() % balls.length());
+
 		if (count(locationOfBalls.begin(), locationOfBalls.end(), key))
+		{
+			amountOfBalls++;
+		}
+		else {
 			locationOfBalls.push_back(key);
+		}
 	}
+
 	for (int i = 1; i < balls.size(); i++)
 	{
-		treeWithBalls += "##";
+		if (count(locationOfBalls.begin(), locationOfBalls.end(), i))
+		{
+			treeWithBalls+="==";
+		}
 	}
 	return treeWithBalls;
 }
@@ -40,7 +50,7 @@ int main()
 	int row = 0;
 	int number = 0;
 	string space = "";
-	string tree = "#";
+	string tree = "*";
 	string copyForTree = "";
 
 	cout << "Input the size of the Christmass Tree: ";
@@ -60,20 +70,21 @@ int main()
 			copyOfSize--;
 		}
 
-		/*if (i = row)
+		if (i == row)
 		{
-			tree = copyForTree;
-		}*/
+			copyForTree = tree;
+			cout << space <<christamsBalls(copyForTree) <<endl;
+		}
 
 
-		if (tree.size() > 1)
+		else if (tree.size() > 1)
 		{
 			cout << space << tree << endl;
 		}
 		else {
 			cout << space << "@" << endl;
 		}
-		tree += "##";
+		tree += "**";
 		space = "";
 	}
 	while (copyOfSize + 1 > 0)
