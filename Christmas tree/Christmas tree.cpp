@@ -73,7 +73,7 @@ int main()
 			copyOfSize--;
 		}
 
-		if (i == row)
+		if (i == row) 
 		{
 			copyForTree = tree;
 			cout << space <<christamsBalls(copyForTree) <<endl;
